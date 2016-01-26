@@ -1053,7 +1053,7 @@ inline PNEANetMP ToTNEANetMP2(PTable Table, const TStr& SrcCol, const TStr& DstC
   for (int i = 0; i < NThreads; i++) {
     int CollectorId = 0;
     for (int j = Parts[i]; j < Parts[i+1]; j++) {
-      if (SrcCol1[j] >= IdRanges[CollectorId]) {
+      while (SrcCol1[j] >= IdRanges[CollectorId]) {
         SrcOffsets[i][CollectorId++] = j;
       }
     }
@@ -1066,7 +1066,7 @@ inline PNEANetMP ToTNEANetMP2(PTable Table, const TStr& SrcCol, const TStr& DstC
   for (int i = 0; i < NThreads; i++) {
     int CollectorId = 0;
     for (int j = Parts[i]; j < Parts[i+1]; j++) {
-      if (DstCol2[j] >= IdRanges[CollectorId]) {
+      while (DstCol2[j] >= IdRanges[CollectorId]) {
         DstOffsets[i][CollectorId++] = j;
       }
     }
